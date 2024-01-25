@@ -2,7 +2,7 @@
 
 This repository contains the binaries, scripts, and configuration files necessary to run a local development network for a development environment for Arcology Network. This network is intended to be used for testing and development purposes only. The network is configured to use a single node, and is not intended to be used for testing validator functionality. 
 
-For more information about Arcology Network, please visit [Arcology Network](https://doc.arcology.network/).
+For more information about, please visit [Arcology Network](https://doc.arcology.network/).
 
 ## Overview
 
