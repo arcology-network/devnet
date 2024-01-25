@@ -2,15 +2,21 @@
 
 This repository contains the binaries, scripts, and configuration files necessary to run a local development network for a development environment for Arcology Network. This network is intended to be used for testing and development purposes only. The network is configured to use a single node, and is not intended to be used for testing validator functionality. 
 
-For more information about, please visit [Arcology Network](https://doc.arcology.network/).
+For more information about Arcology Network, please visit [Arcology Network](https://doc.arcology.network/).
 
 ## Overview
 
-This is an all-in-one package for running a local development network. Once installed, the network will be running on your local machine. The package contains the following major components:
+This is an **all-in-one** package for running a local development network. Once installed, the network will be running on your local machine. The package contains the following major components:
 
 - An Ethereum L1 
 - An Optimism bridge
 - An Arcology parallel execution node
+
+Arcology utilizes the bridge components from Optimism to establish communication with the Ethereum Layer 1 (L1). Both the Optimism bridge components and a local Ethereum L1 node are included into this package. This setup ensures that the Arcology parallel execution node utilizes both the local Ethereum L1 node and the local Optimism bridge for seamless integration.
+
+### Package Structure
+
+The installation process will install the following files and directories:
 
 | Name         | Description                                   |
 |--------------|---------------------------------------------- |
