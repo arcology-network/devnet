@@ -1,10 +1,38 @@
 # devnet
+- [devnet](#devnet)
+  - [1. Overview](#1-overview)
+    - [1.1. Quick Start](#11-quick-start)
+    - [1.2. Installation Package](#12-installation-package)
+    - [1.3. Internal Structure](#13-internal-structure)
+  - [2. Getting Started](#2-getting-started)
+    - [2.1. Requirements](#21-requirements)
+    - [2.2. Download the Package](#22-download-the-package)
+    - [2.3. Workflow](#23-workflow)
+  - [3. Install Ethereum L1](#3-install-ethereum-l1)
+  - [4. Install L2](#4-install-l2)
+    - [4.1. Install Environment](#41-install-environment)
+    - [4.2. Set Environment Variables](#42-set-environment-variables)
+    - [4.3. Load the Variables](#43-load-the-variables)
+    - [4.4. Configure Installation](#44-configure-installation)
+    - [4.5. Deploy Contracts to L1](#45-deploy-contracts-to-l1)
+    - [4.6. Generate Installation Configuration Files](#46-generate-installation-configuration-files)
+  - [5. Start L2](#5-start-l2)
+    - [5.1. Start Arcology Node](#51-start-arcology-node)
+    - [5.2. Start op-node](#52-start-op-node)
+    - [5.3. Start op-batcher](#53-start-op-batcher)
+    - [5.4. Start op-proposer](#54-start-op-proposer)
+
+## 1. Overview
 
 This repository contains the binaries, scripts, and configuration files necessary to run a local development network for a development environment for Arcology Network. This network is intended to be used for testing and development purposes only. The network is configured to use a single node, and is not intended to be used for testing validator functionality. 
 
 For more information about Arcology Network, please visit [Arcology Network](https://doc.arcology.network/).
 
-## Overview
+### 1.1. Quick Start
+
+There is a **docker image option** aviailable please check **[this document]()** for more information
+
+### 1.2. Installation Package
 
 This is an **all-in-one** package for running a local development network. Once installed, the network will be running on your local machine. The package contains the following major components:
 
@@ -12,16 +40,14 @@ This is an **all-in-one** package for running a local development network. Once 
 - An Optimism bridge
 - An Arcology parallel execution node
 
-Arcology utilizes the bridge components from Optimism to establish communication with the Ethereum Layer 1 (L1). Both the Optimism bridge components and a local Ethereum L1 node are included into this package. This setup ensures that the Arcology parallel execution node utilizes both the local Ethereum L1 node and the local Optimism bridge for seamless integration.
+### 1.3. Internal Structure
 
-### Package Structure
-
-The installation process will install the following files and directories:
+The installation package contains the following files and directories:
 
 | Name         | Description                                   |
 |--------------|---------------------------------------------- |
-| L1           | -                                             |
-| L2           | -                                             |
+| L1           | This directory contains the files for the Ethereum L1 node.  |
+| L2           | L2: This directory contains the files for the Optimism bridge and Arcology parallel execution node. |
 | README.md    | Documentation file for the project.           |
 | bin          | Directory for binary/executable files.        |
 | cmd          | Directory for command-related files.          |
@@ -37,21 +63,21 @@ The installation process will install the following files and directories:
 | test         | Directory for testing-related files.          |
 
 
-## Getting Started
+## 2. Getting Started
 
 You will also need to have **two machines**, either physical or virtual, to run the development network. One machine will be used to run the L1 and the other will be used to run the Arcology parallel execution node and Optimism bridge,. The two machines must be able to communicate with each other over the network.
 
 - **Machine 1:** Ethereum L1  
 - **Machine 2:** Optimism bridge and Arcology parallel execution node
 
-### Requirements
+### 2.1. Requirements
 
-- 8GB RAM
+- 16GB RAM
 - 4 CPU cores
 - 100GB disk space
 - Ubuntu 20.04 or later
 
-### Download the Package
+### 2.2. Download the Package
 
 Download the package first then follow the steps below to install and run the development network.
 
@@ -59,11 +85,11 @@ Download the package first then follow the steps below to install and run the de
   > git clone https://github.com/arcology-network/devnet.git
   ```
 
-  ### Workflow
+  ### 2.3. Workflow
 
-![](./l1-l2.png)
+![](/l1-l2.png)
 
-## Install Ethereum L1
+## 3. Install Ethereum L1
 
 The Ethereum L1 needs to be set up first. The package comes with a script with the necessary commands to install the L1. The installation script does the following things:
 
@@ -79,13 +105,13 @@ The Ethereum L1 needs to be set up first. The package comes with a script with t
 ```
 Now the L1 is ready to be used and produces empty blocks.
 
-##  Install L2
+##  4. Install L2
 
 Now move on to the second machine to install the L2 related files. The L2 includes:
 - A standard Optimism bridge 
 - An Arcology parallel execution node 
 
-### Install Environment
+### 4.1. Install Environment
 
 The following steps are performed on the machine where the L1 is located. 
 
@@ -94,13 +120,13 @@ The following steps are performed on the machine where the L1 is located.
 ```
 >> Please make sure to close the current terminal window once the installation is completed.
 
-### Set Environment Variables
+### 4.2. Set Environment Variables
 
 The environment file `.envrc` is located in the root directory of the package. It contains the environment configuration for the L1 and L2. Please modify the following parameters in the configuration file:
 
 - **L1_RPC_URL** should be set to the IP address of the L1 machine
 
-### Load the Variables
+### 4.3. Load the Variables
 
 The environment variables are loaded using [direnv](https://direnv.net/). If you don't have direnv installed, please install it first.
 
@@ -117,7 +143,7 @@ You should see output that looks something like the following (the exact output 
   direnv: export +DEPLOYMENT_CONTEXT +ETHERSCAN_API_KEY +GS_ADMIN_ADDRESS +GS_ADMIN_PRIVATE_KEY +GS_BATCHER_ADDRESS +GS_BATCHER_PRIVATE_KEY +GS_PROPOSER_ADDRESS +GS_PROPOSER_PRIVATE_KEY +GS_SEQUENCER_ADDRESS +GS_SEQUENCER_PRIVATE_KEY +IMPL_SALT +L1_RPC_KIND +L1_RPC_URL +PRIVATE_KEY +TENDERLY_PROJECT +TENDERLY_USERNAME
 ```
 
-### Configure Installation
+### 4.4. Configure Installation
 
 Generate a default OP configuration file containing the default values for the OP components. The script will generate a file named `getting-started.json`.
 
@@ -131,7 +157,7 @@ The default configuration file only contains the default values. The following c
   devnet> ./cmd/chainID.sh
 ```
 
-### Deploy Contracts to L1
+### 4.5. Deploy Contracts to L1
 
 It is time to deploy the OP bridge contract to the Ethereum L1. The following command will deploy the L1 contracts to the L1 machine **from the L2 machine.**
 
@@ -139,7 +165,7 @@ It is time to deploy the OP bridge contract to the Ethereum L1. The following co
   devnet> ./cmd/l1contracts.sh
 ```
 
-### Generate Installation Configuration Files
+### 4.6. Generate Installation Configuration Files
 
 The following command will generate the configuration files base on the deployment context. 
 
@@ -152,11 +178,11 @@ The following files will be generated:
 - `genesis.json` contains the genesis block for the Arcology parallel execution node
 - `jwt.txt` contains the private key for the Arcology to authenticate the transactions received from the OP Node. 
 
-## Start L2
+## 5. Start L2
 
 You are now ready to start the L2 network. **Start a new terminal**, and load the system variables by executing the following instructions on the **machine** for L2. 
 
-### Start Arcology Node
+### 5.1. Start Arcology Node
 
 The final step is to start the Arcology node. The following steps are performed on the **machine** where the Arcology is installed.
 
@@ -164,19 +190,19 @@ The final step is to start the Arcology node. The following steps are performed 
   devnet> ./start.sh
 ```
 
-### Start op-node
+### 5.2. Start op-node
 
 ```shell
   devnet> ./cmd/02-startNode.sh
 ```
 
-###  Start op-batcher
+###  5.3. Start op-batcher
 
 ```shell
   devnet> ./cmd/03-startBatcher.sh
 ```
 
-###  Start op-proposer
+###  5.4. Start op-proposer
 
 ```shell
   devnet> ./cmd/04-startProposer.sh
