@@ -61,7 +61,7 @@ Download the package first then follow the steps below to install and run the de
 
   ### Workflow
 
-![](/img/l1-l2.png)
+![](./l1-l2.png)
 
 ## Install Ethereum L1
 
