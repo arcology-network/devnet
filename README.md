@@ -6,8 +6,8 @@
     - [1.3. Internal Structure](#13-internal-structure)
   - [2. Getting Started](#2-getting-started)
     - [2.1. Requirements](#21-requirements)
-    - [2.2. Download the Package](#22-download-the-package)
-    - [2.3. Workflow](#23-workflow)
+    - [2.2. Workflow](#22-workflow)
+    - [2.3. Download the Package](#23-download-the-package)
   - [3. Install Ethereum L1](#3-install-ethereum-l1)
   - [4. Install L2](#4-install-l2)
     - [4.1. Install Environment](#41-install-environment)
@@ -77,17 +77,17 @@ You will also need to have **two machines**, either physical or virtual, to run 
 - 100GB disk space
 - Ubuntu 20.04 or later
 
-### 2.2. Download the Package
+### 2.2. Workflow
+
+![](/l1-l2.png)
+
+### 2.3. Download the Package
 
 Download the package first then follow the steps below to install and run the development network.
 
-  ```shell
+```shell
   > git clone https://github.com/arcology-network/devnet.git
-  ```
-
-  ### 2.3. Workflow
-
-![](/l1-l2.png)
+```
 
 ## 3. Install Ethereum L1
 
