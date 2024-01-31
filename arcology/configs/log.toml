@@ -1,0 +1,18 @@
+Level	  = "debug"
+Version = "1.9.0"
+
+[Console]
+SystemOut = true
+
+[RedisCfg]
+SendRedis = false
+RedisSvc  = "127.0.0.1:6379"
+ListName   = "log_list"
+
+[LocalFile]
+SaveFile  = true
+MaxSize   = 1
+MaxBackups= 30
+MaxAge    = 7
+Compress  = false
+Ignored = "rawtx,txLocal,txRemote,txBlock,messager,unknown,checkedtx,checkingtx,executingLogs"

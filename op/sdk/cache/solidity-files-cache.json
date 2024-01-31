@@ -1,0 +1,151 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/weizp/work/gows/src/github.com/ethereum-optimism/optimism-tutorial/cross-dom-comm/hardhat/contracts/FromL1_ControlL2Greeter.sol": {
+      "lastModificationDate": 1705744696254,
+      "contentHash": "2d07b703fe5fbd5c66e5472af4f80669",
+      "sourceName": "contracts/FromL1_ControlL2Greeter.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@eth-optimism/contracts/libraries/bridge/ICrossDomainMessenger.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "FromL1_ControlL2Greeter"
+      ]
+    },
+    "/home/weizp/work/gows/src/github.com/ethereum-optimism/optimism-tutorial/cross-dom-comm/hardhat/node_modules/@eth-optimism/contracts/libraries/bridge/ICrossDomainMessenger.sol": {
+      "lastModificationDate": 1703851251815,
+      "contentHash": "96f84d060c3ea745d1a2f7a71b796f4f",
+      "sourceName": "@eth-optimism/contracts/libraries/bridge/ICrossDomainMessenger.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">0.5.0 <0.9.0"
+      ],
+      "artifacts": [
+        "ICrossDomainMessenger"
+      ]
+    },
+    "/home/weizp/work/gows/src/github.com/ethereum-optimism/optimism-tutorial/cross-dom-comm/hardhat/contracts/Greeter.sol": {
+      "lastModificationDate": 1703850844336,
+      "contentHash": "21c01e47e680639712156c0dc7542c7d",
+      "sourceName": "contracts/Greeter.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@eth-optimism/contracts/libraries/bridge/ICrossDomainMessenger.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Greeter"
+      ]
+    },
+    "/home/weizp/work/gows/src/github.com/ethereum-optimism/optimism-tutorial/cross-dom-comm/hardhat/contracts/FromL2_ControlL1Greeter.sol": {
+      "lastModificationDate": 1705668055597,
+      "contentHash": "e896742600f4096fb63060168d68e256",
+      "sourceName": "contracts/FromL2_ControlL1Greeter.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@eth-optimism/contracts/libraries/bridge/ICrossDomainMessenger.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "FromL2_ControlL1Greeter"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "L1": {
+    "AddressManager": "0x363c9413c03901aA327d250d819237DE6b0280dd",
+    "StateCommitmentChain": "0x0000000000000000000000000000000000000000",
+    "CanonicalTransactionChain": "0x0000000000000000000000000000000000000000",
+    "BondManager": "0x0000000000000000000000000000000000000000",
+    "L1CrossDomainMessenger": "0x7BFE0A21796937d7E5cB1d51f433432E62aCebC0",
+    "L1StandardBridge": "0x17c220049684941D53384256AA0de6Be778610bD",
+    "OptimismPortal": "0x471EdBc375D23ca7e6d2C2149E412f28cC9FB66e",
+    "L2OutputOracle": "0x10Dcd71c5FE8c1B90DA9E9c624A9F23240b783C4"
+  },
+  "L1Greeter": "",
+  "L2Greeter": "",
+  "TxHash": ""
+}
