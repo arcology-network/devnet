@@ -22,3 +22,5 @@ text "OK" 1
 title "[ System Started ]"
 text "Refer to the log file( $logfile ) for details" 1
 echo
+
+/bin/bash
