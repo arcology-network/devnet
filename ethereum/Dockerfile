@@ -6,7 +6,7 @@ WORKDIR eth
 
 RUN apt-get update
 RUN apt install sudo
-RUN ./installJq.sh
+RUN ./installEnv.sh
 
 EXPOSE 7545
 

@@ -13,5 +13,6 @@ RUN ./cli/install.sh -p 127.0.0.1
 
 EXPOSE 8545
 
-CMD ["./cli/start.sh","-l","$L1_RPC_URL"]
+ENTRYPOINT ["cli/start.sh"]
+
  

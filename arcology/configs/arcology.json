@@ -2,33 +2,35 @@
     "settings": {
         "prometheus_listen_addr": ":19000",
         "envs": {
-            "generate_apc_handle": true,
+            "generate_apc_handle": "block",
             "generate_url_update": true,
             "generate_acct_root": true,
             "init_db": true,
-            "cached":true,
+	        "dbpath": "../arcology/urlfiles",
+            "cached": true,
             "transactional": true,
-            "no_op":false
+            "no_op": false
         }
     },
     "actors": {
-        "-general_url-stateful_euresult_aggr_selector": {
+        "-general_url-stateless_euresult_aggr_selector": {
             "general_url": {
-                "generate_apc_handle": "__env__",
+                "generate_apc_handle": "generation",
                 "generate_url_update": "__env__",
                 "generate_acct_root": "__env__",
                 "init_db": "__env__",
+		        "dbpath": "__env__",
                 "cached":"__env__",
                 "transactional":"__env__"
             },
-            "stateful_euresult_aggr_selector": {
-                "output": "selectedexecuted"
+            "stateless_euresult_aggr_selector": {
+                "output": "executed"
             }
         },
 
         "storage.initializer": {
             "genesis_file": "../configs/genesis.json",
-            "storage_db_path": "../arcology/urlfiles"
+	        "dbpath": "__env__"
         },
         "stateful_receipt_aggr_selector": {},
         "storage": {
@@ -50,7 +52,6 @@
         "executor": {
             "chain_id": "__global__"
         },
-        "stateless_euresult_aggr_selector": {},
         "access_record_pre_processor": {},
         "access_record_aggr_selector": {},
         "arbitrator_rpc": {},
@@ -59,21 +60,22 @@
         "tx_unsigner": {
             "chain_id": "__global__"
         },
-        "-nonce_url-stateful_euresult_aggr_selector4pool": {
+        "-nonce_url-stateless_euresult_aggr_selector4pool": {
             "nonce_url": {
-                "generate_apc_handle": true,
+                "generate_apc_handle": "block",
                 "generate_url_update": false,
                 "generate_acct_root": false,
                 "init_db": false,
+		        "dbpath": "../arcology/dbnonce",
                 "cached": false,
                 "transactional": false
             },
-            "stateful_euresult_aggr_selector4pool": {
+            "stateless_euresult_aggr_selector4pool": {
                 "output": "commitNonceUrl"
             }
         },
         "pool_aggr_selector": {
-            "max_reap_size": 100,
+            "max_reap_size": 5000,
             "obsolete_time": 100,
             "close_check": true,
             "chain_id": "__global__",
@@ -101,6 +103,7 @@
         "state_query":{},
         "make_block": {},
         "core.initializer": {},
+	"apc_switcher": {},
         "scheduler": {
             "batch_size": 500,
             "parallelism": 4,

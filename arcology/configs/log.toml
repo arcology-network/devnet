@@ -1,5 +1,5 @@
-Level	  = "debug"
-Version = "1.9.0"
+Level	  = "info"
+Version = "2.0.0"
 
 [Console]
 SystemOut = true
