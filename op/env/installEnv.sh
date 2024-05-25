@@ -17,9 +17,9 @@ text "Installing curl ..."
 sudo apt install -y curl >> $logfile 2>&1
 text "OK" 1
 
-text "Installing direnv ..."
-sudo apt install -y direnv >> $logfile 2>&1
-text "OK" 1
+# text "Installing direnv ..."
+# sudo apt install -y direnv >> $logfile 2>&1
+# text "OK" 1
 
 text "Installing nodejs ..."
 ./node.sh >> $logfile 2>&1
@@ -41,4 +41,4 @@ eval "$(cat ~/.bashrc | tail -n +10)"
 
 ./versions.sh >> $logfile 2>&1
 
-echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
+# echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
