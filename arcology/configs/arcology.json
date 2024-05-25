@@ -17,17 +17,19 @@
             "general_url": {
                 "generate_apc_handle": "generation",
                 "generate_url_update": "__env__",
-                "generate_acct_root": "__env__",
                 "init_db": "__env__",
 		        "dbpath": "__env__",
                 "cached":"__env__",
+		        "object_cached": true,
                 "transactional":"__env__"
             },
             "stateless_euresult_aggr_selector": {
                 "output": "executed"
             }
         },
-
+        "general_url_async": {
+            "generate_acct_root": "__env__"
+        },
         "storage.initializer": {
             "genesis_file": "../configs/genesis.json",
 	        "dbpath": "__env__"
@@ -64,18 +66,21 @@
             "nonce_url": {
                 "generate_apc_handle": "block",
                 "generate_url_update": false,
-                "generate_acct_root": false,
                 "init_db": false,
 		        "dbpath": "../arcology/dbnonce",
                 "cached": false,
+		        "object_cached": false,
                 "transactional": false
             },
             "stateless_euresult_aggr_selector4pool": {
                 "output": "commitNonceUrl"
             }
         },
+        "nonce_url_async": {
+            "generate_acct_root": false
+       	},
         "pool_aggr_selector": {
-            "max_reap_size": 5000,
+            "max_reap_size": 20000,
             "obsolete_time": 100,
             "close_check": true,
             "chain_id": "__global__",
@@ -106,7 +111,7 @@
 	"apc_switcher": {},
         "scheduler": {
             "batch_size": 500,
-            "parallelism": 4,
+            "parallelism": 16,
             "conflict_file": "../configs/conflictlist"
         },
         "consensus": {
