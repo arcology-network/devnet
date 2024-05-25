@@ -11,6 +11,7 @@
   "dependencies": {
     "@eth-optimism/contracts": "^0.5.40",
     "@eth-optimism/sdk": "^3.0.0",
+    "@arcologynetwork/frontend-tools": "^1.0.3",
     "dotenv": "^16.0.0"
   }
 }
