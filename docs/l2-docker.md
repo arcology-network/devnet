@@ -11,12 +11,11 @@ It is recommended to use docker containers to deploy the development network for
 	 ethereum> docker build -t eth:v1 .
 	 ethereum> docker run -itd --name ethv1 -p 7545:7545 eth:v1
  ```
- 
- - --name specifies the container ID
+  - --name specifies the container ID
  - -f indicates the RPC URL of the L1 node
  - -s specify the RPC URL of the L2 node
    
- Feel free to customize the container name as needed.
+>> Feel free to customize the container name as needed.
  
  ### Arcology L2 Rollup
  
@@ -26,6 +25,7 @@ It is recommended to use docker containers to deploy the development network for
  ``` shell
 	 devnet> docker build -t arcology-dev:v1 .
 	 devnet> docker run -itd --name l2 -p 8545:8545 arcology-dev:v1 -f http://192.168.1.108:7545 -s http://192.168.1.108:8545 
+	 devnet> docker attach l2
  ```
  >> The whole process will take a few minutes to complete. So please be patient.
 
@@ -36,6 +36,8 @@ Log in to the docker container running the L2 network.
 
 ```shell
     devnet> docker exec -it l2 /bin/bash
+	devnet> cd op/sdk/node_modules/@arcologynetwork/frontend-tools
+	> nodejs tools/network-monitor.js http://192.168.1.108:8545 
 ```
 
 On the machine, run the following command to check the network status:
