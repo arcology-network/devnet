@@ -13,9 +13,11 @@ done
 
 if [ "${version}" == "" ]
 then
-  echo "please input current version ( -v X.X.X)"
+  echo "Please specify the version ( -v X.X.X)"
   exit 1
 fi
+
+mkdir -p op/bin
 
 wget -O arcology/bin/arcology https://github.com/arcology-network/binary-releases/releases/download/v${version}/arcology
 wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/v${version}/geth 

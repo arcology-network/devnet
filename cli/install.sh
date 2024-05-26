@@ -29,6 +29,10 @@ sudo chmod 755 op/env/*
 sudo chmod 755 arcology/bin/*
 sudo chmod 755 ethereum/*
 
+mkdir -p arcology/arcology
+mkdir -p op/bin
+mkdir -p log
+
 cd op/env
 ./installEnv.sh
 
