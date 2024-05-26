@@ -6,4 +6,4 @@ cp jwt.txt $confpath/jwt.txt
 cp genesis.json $confpath/genesis.json
 
 cd ../arcology
-./bin/start.sh
+./bin/start.sh $1

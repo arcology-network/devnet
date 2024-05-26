@@ -26,6 +26,6 @@ cd ../../bin
 #sleep 10
 ./arcology init >> ${logfile}_arcology 2>&1 & 
 sleep 10
-./arcology start --global=../configs/global.json --kafka=../configs/kafka-nil.json --app=../configs/arcology.json >> ${logfile}_arcology 2>&1 & 
+./arcology start --global=../configs/global.json --kafka=../configs/kafka-nil.json --app=../configs/arcology.json --runAsL1=$1>> ${logfile}_arcology 2>&1 & 
 sleep 10
 text "OK" 1

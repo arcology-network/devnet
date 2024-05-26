@@ -8,8 +8,7 @@
             "init_db": true,
 	        "dbpath": "../arcology/urlfiles",
             "cached": true,
-            "transactional": true,
-            "no_op": false
+            "transactional": true
         }
     },
     "actors": {
@@ -83,8 +82,7 @@
             "max_reap_size": 20000,
             "obsolete_time": 100,
             "close_check": true,
-            "chain_id": "__global__",
-            "no_op":"__env__"
+            "chain_id": "__global__"
         },
         "local_tx_receiver": {},
         "tx_dup_checker": {

@@ -1,27 +1,35 @@
 #!/usr/bin/env bash
 . ./cli/show.sh
 
-while getopts f:s: OPT; do
+while getopts f:s:r: OPT; do
  case ${OPT} in
   f) l1rpc=${OPTARG}
     ;;
   s) l2rpc=${OPTARG}
     ;;
+  r) runasl1=${OPTARG}
+    ;;
   \?)
-    printf "[Usage] `date '+%F %T'` -l1 <L1_RPC_URL> -l2 <L2_RPC_URL>\n" >&2
+    printf "[Usage] `date '+%F %T'` -f <L1_RPC_URL> -s <L2_RPC_URL> -r <RunAsL1>\n" >&2
     exit 1
  esac
 done 
 
 if [ "${l1rpc}" == "" ]
 then
-  echo "please input l1 rpc url ( -l1 http://ip:port)"
+  echo "please input l1 rpc url ( -f http://ip:port)"
   exit 1
 fi
 
 if [ "${l2rpc}" == "" ]
 then
-  echo "please input l2 rpc url ( -l2 http://ip:port)"
+  echo "please input l2 rpc url ( -s http://ip:port)"
+  exit 1
+fi
+
+if [ "${runasl1}" == "" ]
+then
+  echo "please input run mode ( -r RunAsL1:true or false)"
   exit 1
 fi
 
@@ -42,41 +50,44 @@ source ~/.bashrc
 
 #################################################################################################
 
-./cmd/main.sh
-
+if [ "${runasl1}" == "false" ]
+then
+  ./cmd/main.sh
+fi
 
 title "[ Start L2 Node ]"
 
 
-./cmd/startArcology.sh
+./cmd/startArcology.sh ${runasl1}
 
 sleep 20
 
-
-title "[ Start OP Bridge ]"
-
-
-text "Starting OpNode ..."
-./cmd/startNode.sh  >> ${logfile}_opNode 2>&1 & 
-sleep 10
-text "OK" 1
+if [ "${runasl1}" == "false" ]
+then
+  title "[ Start OP Bridge ]"
 
 
-
-text "Starting opBatcher ..."
-./cmd/startBatcher.sh  >> ${logfile}_opBatcher 2>&1 & 
-sleep 10
-text "OK" 1
+  text "Starting OpNode ..."
+  ./cmd/startNode.sh  >> ${logfile}_opNode 2>&1 & 
+  sleep 10
+  text "OK" 1
 
 
 
-text "Starting opProposer ..."
-./cmd/startProposer.sh  >> ${logfile}_opProposer 2>&1 & 
-sleep 10
-text "OK" 1
+  text "Starting opBatcher ..."
+  ./cmd/startBatcher.sh  >> ${logfile}_opBatcher 2>&1 & 
+  sleep 10
+  text "OK" 1
 
-title "[ System Started ]"
-text "Refer to the log file( ${logfile}_config,${logfile}_arcology,${logfile}_opNode,${logfile}_opBatcher,${logfile}_opProposer ) for details" 1
-echo
 
+
+  text "Starting opProposer ..."
+  ./cmd/startProposer.sh  >> ${logfile}_opProposer 2>&1 & 
+  sleep 10
+  text "OK" 1
+
+  title "[ System Started ]"
+  text "Refer to the log file( ${logfile}_config,${logfile}_arcology,${logfile}_opNode,${logfile}_opBatcher,${logfile}_opProposer ) for details" 1
+  echo
+fi
 /bin/bash
