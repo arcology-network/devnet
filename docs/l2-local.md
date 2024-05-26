@@ -5,35 +5,32 @@ You will also need to have **two machines**, either physical or virtual, to run 
 - **Machine 1:** Ethereum L1  
 - **Machine 2:** Optimism bridge and Arcology parallel execution node
 
-## 3. Install Ethereum L1
+## 3. Start Ethereum L1
 
-The Ethereum L1 needs to be set up first. The package comes with a script with the necessary commands to install the L1. The installation script does the following things:
+The Ethereum L1 needs to be set up first. Execute the following commands the **first machine** where the L1 is going to run.
+
+```shell
+  devnet> cd ethereum
+  ethereum> ./installEnv.sh
+  ethereum> ./start.sh
+```
+
+The installation script does the following things:
 
 - Install Environment for the L1
 - Start the the Ethereum L1 node
 - Deploy a proxy contract for the Optimism bridge
 
- Please execute the following command to call the script. The following steps are performed on the **machine** where the L1 is installed.
-
-```shell
-  L1>./start.sh
-```
 Now the L1 is ready to be used and produces empty blocks.
 
-##  4. Install L2
+##  4. Start Arcology as L2
 
-Now move on to the second machine to install the L2 related files. The L2 includes:
-- A standard Optimism bridge 
-- An Arcology parallel execution node 
-
-### 4.1. Install Environment
-
-The following steps are performed on the machine where the L1 is located. 
+Now move on to the **second machine** to start the L2 network. Assuming the first machine's IP is `192.168.1.107` and the second is `192.168.1.108`.
 
 ```shell
-  devnet>install.sh -p X.X.X.X    # Your local IP
+  devnet> ./cli/install.sh -p 192.168.1.108 
+  devnet> ./cli/start.sh -f http://192.168.1.107:7545 -s http://192.168.1.108:8545 -r false
 ```
->> Please make sure to close the current terminal window once the installation is completed.
 
 ### 4.2. Set Environment Variables
 
