@@ -1,63 +1,39 @@
-SDK User Guide
+# SDK User Guide
 
-### 1.design thought
+This guide explores testing the interaction between L1 and L2 networks using the SDK's op bridge, focusing on "deposit" and "withdraw" transactions. In addition, This documentation details deploying a "greet" contract on both L1 and L2 and outlines the process for cross-chain data transfer through these greetings. Here's how it works:
 
-​		The main purpose is to test the communication between L1 and L2 by operating the op bridge through the sdk. It is mainly divided into two types of transactions, deposit and withdraw, for testing and verification. We deploy a contract (greet) on L1 and L2, and we implement cross-chain data transfer through calls to both contracts.
+Deposit (L1 to L2):
 
-- deposit（L1-->L2）direction
+- Initial L2 greeting: "hello world."
+- L1 sends a message: "Hello L2, I am L1."
+- Updated L2 greeting: "Hello L2, I am L1."
+- Withdraw (L2 to L1):
 
-  Originally, the L2 contract greeting was ：“hello world.”
+Initial L1 greeting: "hello world."
+- L2 sends a message: "Hello L1, I am L2."
+- Updated L1 greeting: "Hello L1, I am L2."
 
-  L1 sends a greeting to L2，“Hello L2 ，I am L1.”
+>> We assume that L1 and L2 are working properly.
 
-  Querying the L2 greeting becomes：“Hello L2 ，I am L1.”
+## 1. Prerequisites
 
-- withdraw（L2-->L1) 方向
+- Live L1 and L2 networks
+- Node.js
+- Yarn
+- Hardhat
 
-  Originally，the L1 contract greeting was ：“hello world.”
 
-  L2 sends a greeting to L1，“Hello L1 ，I am L2.”
+### 3.1 Transfer from L1 to L2
 
-  Querying the L1 greeting becomes：“Hello L1 ，I am L2.”
-
-### 2.experimentation
-
-We assume that L1 and L2 are working properly.
-
-#### 2.1.setting
-
-Go to the sdk directory, edit the network.json file, and configure L1 and L2 basic information
-
-```json
-{
-  "L1": {
-     "url": "http://192.168.230.137:7545",
-     "accounts": ["0x29ca9bc036a8f88c2aa3d57969b508189094f4814e01f4969c49250fecfe3e04"],
-     "addrs": ["0xd5355603c407B6688fd0F995D8c4F98DD3a91aF5"],
-     "chainId": 100
-   },
-   "L2": {
-     "url": "http://192.168.230.131:8545",
-     "accounts": ["0x29ca9bc036a8f88c2aa3d57969b508189094f4814e01f4969c49250fecfe3e04"],
-     "addrs": ["0xd5355603c407B6688fd0F995D8c4F98DD3a91aF5"],
-     "chainId": 118
-   }
-}
-```
-
-To facilitate testing, configure an account private key and address for L1 and L2.
-
-#### 2.2.Transfer from L1 address to L2
+First, we are going to test the transfer of funds from L1 to L2 to ensure that the L2 address can receive the funds. Before performing this step, ensure there are sufficient balance in the sender's account.
 
 ```shell
 sdk> yarn hardhat run test/01-transfer_L1.js --network L1
 ```
 
-Before performing this step, ensure that there are sufficient ether in the L1 address configured in 2.1.
+### 3.2. Check the Balance on L2
 
-#### 2.3.Check whether the funds have arrived
-
-On L2, check whether the configured address has received the transferred funds
+On the machine where L2 is running, check if the recipient address has successfully received the transferred funds.
 
 ```shell
 sdk> yarn hardhat run test/02-balance_L2.js --network L2
@@ -70,11 +46,14 @@ transfer successful
 Done in 156.52s.
 ```
 
-#### 2.4.Deploy greet contract
+### 2.4. Deploy the Greet Contract
 
 ```shell
 sdk> yarn hardhat run test/03-deployer.js --network L1  #deploy to L1
+```
+If the deployment is successful, you will see the following output:
 
+```
 Testing with greeter at 0xea563ce256583121652ee17E159Ec0A7d83e8cCc
 JSON file update successful
 Done in 10.54s.
@@ -82,15 +61,18 @@ Done in 10.54s.
 
 ```shell
 sdk> yarn hardhat run test/03-deployer.js --network L2  #deploy to L2
+```
+Yill see the following output if the deployment is successful:
 
+```
 Testing with greeter at 0x363c9413c03901aA327d250d819237DE6b0280dd
 JSON file update successful
 Done in 10.54s.
 ```
 
-#### 2.5.Deposit transaction
+## 2.5.Deposit transaction
 
-##### 2.5.1.Query L2 original greeting
+### 2.5.1.Query L2 original greeting
 
 ```shell
 sdk> yarn hardhat run test/05-deposit_L2.js --network L2  
@@ -99,19 +81,19 @@ Hello, world!
 Done in 10.53s.
 ```
 
-##### 2.5.2.L1 sends a greeting to L2
+### 2.5.2.L1 sends a greeting to L2
 
 ```shell
 sdk> yarn hardhat run test/04-deposit_L1.js --network L1  
 
-More output, as long as no error can be reported
+More output, as long as there is no error
 ```
 
-##### 2.5.3.Query greetings received by L2
+### 2.5.3.Query greetings received by L2
 
 Wait for a moment and query the greetings received by L2. If the greetings do not change, query them again later.
 
-```she&#39;l&#39;l
+```shell
 sdk> yarn hardhat run test/05-deposit_L2.js --network L2  
 
 Hello L2.I am L1.
@@ -120,9 +102,9 @@ Done in 10.53s.
 
 At this point, deopost's operation is basically complete.
 
-#### 2.6withdraw transaction
+## 2.6 Withdraw
 
-##### 2.6.1.L2 sends greetings to L1
+### 2.6.1. L2 Sends Greetings to L1
 
 ```shell
 sdk> yarn hardhat run test/06-withdraw_L2.js --network L2  
@@ -130,7 +112,7 @@ sdk> yarn hardhat run test/06-withdraw_L2.js --network L2
 More output, as long as no error can be reported
 ```
 
-##### 2.6.2.Confirmation on L1
+### 2.6.2.Confirmation on L1
 
 ```shell
 sdk> yarn hardhat run test/07-withdraw_L1.js --network L1 

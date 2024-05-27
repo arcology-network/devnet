@@ -2,7 +2,11 @@
 
 It is recommended to use docker containers to deploy the development network for Arcology. This document guides you through the process of setting up an Arcology devNet using docker containers.
 
-### Ethereum L1
+### Preparation
+
+On the host machine, install the [the dependencies](./preparation.md) first.
+
+### Start Ethereum L1
 
  First we need to build and start the Ethereum L1 container, then move on to the Optimism bridge and Arcology parallel execution node.
  
@@ -22,30 +26,14 @@ It is recommended to use docker containers to deploy the development network for
  ### Arcology L2 Rollup
  
  Now the L1 is up and running, move on to starting the second container for the Arcology rollup.
- Assuming your L1 docker container will be running on 192.168.1.108. You can change the IP address as needed. 
- 
+ Assuming your host machine address is `192.168.174.132`.  
+ Under the the **devnet directory**, run the following commands:
+
+>> Please change the IP address as needed.
+
  ``` shell
 	 devnet> sudo docker build -t arcology-dev:v1 .
-	 devnet> sudo docker run -itd --name l2 -p 8545:8545 arcology-dev:v1 -f http://192.168.1.108:7545 -s http://192.168.1.108:8545 -r false
+	 devnet> sudo docker run -itd --name l2 -p 8545:8545 arcology-dev:v1 -f http://192.168.174.132:7545 -s http://192.168.174.13:8545 -r false
 	 devnet> sudo docker attach l2
  ```
  >> The whole process will take a few minutes to complete. So please be patient.
-
-
-## Check Network Status
-
-Log in to the docker container running the L2 network. 
-
-```shell
-    devnet> docker exec -it l2 /bin/bash
-	devnet> cd op/sdk/node_modules/@arcologynetwork/frontend-tools
-	> nodejs tools/network-monitor.js http://192.168.1.108:8545 
-```
-
-On the machine, run the following command to check the network status:
-
-```shell
-    cd op/sdk/node_modules/@arcologynetwork/frontend-tools
-    nodejs tools/network-monitor.js http://192.168.1.108:8545 
-```
-
