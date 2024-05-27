@@ -1,10 +1,8 @@
 # devnet
 
-This repository contains the binaries, scripts, and configuration files necessary to run a local development network for a development environment for Arcology Network. This network is intended to be used for testing and development purposes only. The network is configured to use a single node, and is not intended to be used for testing validator functionality. 
+This repository contains the binaries, scripts, and configuration files necessary to run a local development network for a development environment for Arcology Network. This network is intended to be used for testing and development purposes only. The network is configured to use a single node, and is not intended to be used for testing validator functionality. For more information about Arcology Network, please visit [Arcology Network](https://doc.arcology.network/).
 
-For more information about Arcology Network, please visit [Arcology Network](https://doc.arcology.network/).
-
-### Structure
+## Package Structure
 
 This is an **all-in-one** package for running a development network for Arcology. Once installed, the network will be running on your local machine. The installation package contains the following files and directories:
 
@@ -27,13 +25,23 @@ This is an **all-in-one** package for running a development network for Arcology
 | test         | Directory for testing-related files.          |
 
 
-## Options
+## Minimum Requirements
 
-An Arcology DevNet can be initiated as either a Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements.
+- 16GB RAM
+- 4 CPU cores
+- 100GB disk space
+- Ubuntu 20.04 or later
+- [Docker engine](https://docs.docker.com/engine/install/ubuntu/)
+- Git
+
+## Deployment Options
+
+An Arcology DevNet can be initiated as either a Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. Once you have cloned the project, you can choose to deploy the network in one of the following ways:
+
 - [L1 setup](./docs/l1.md)
 - [L2 Rollup setup](./docs/l2.md)
 
-<h2> License  <img align="center" height="32" src="./img/copyright.svg">  </h2>
+## License
 
 Arcology's concurrent lib is made available under the MIT License, which disclaims all warranties in relation to the project and which limits the liability of those that contribute and maintain the project. You acknowledge that you are solely responsible for any use of the Contracts and you assume all risks associated with any such use.
 
