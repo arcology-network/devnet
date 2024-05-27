@@ -11,9 +11,9 @@ This is an **all-in-one** package for running a development network for Arcology
 | L1           | This directory contains the files for the Ethereum L1 node.  |
 | L2           | L2: This directory contains the files for the Optimism bridge and Arcology parallel execution node. |
 | README.md    | Documentation file for the project.           |
-| bin          | Directory for binary/executable files.        |
+| bin          | Executable files.        |
 | cmd          | Directory for cli-related files.          |
-| env          | Directory for environment-related files.      |
+| env          | Environment files.      |
 | foundry.toml | Configuration file for Foundry.               |
 | install.sh   | Shell script for installing dependencies.     |
 | lib          | Directory for library files.                  |
@@ -22,7 +22,7 @@ This is an **all-in-one** package for running a development network for Arcology
 | src          | Source code directory.                        |
 | start.sh     | Shell script for starting the project.        |
 | stop.sh      | Shell script for stopping the project.        |
-| test         | Directory for testing-related files.          |
+| test         | For testing-related files.          |
 
 
 ## Minimum Requirements
@@ -36,10 +36,11 @@ This is an **all-in-one** package for running a development network for Arcology
 
 ## Network Setup
 
-An Arcology DevNet can be initiated as either a Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. 
+An Arcology DevNet can be initiated as either an EVM equivalent Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. 
 
 - [L1 setup](./docs/l1.md)
 - [L2 Rollup setup](./docs/l2.md)
+
 
 ## License
 
