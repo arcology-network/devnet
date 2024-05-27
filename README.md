@@ -36,11 +36,10 @@ This is an **all-in-one** package for running a development network for Arcology
 
 ## Network Setup
 
-An Arcology DevNet can be initiated as either an EVM equivalent Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. 
+An Arcology DevNet can be initiated as either an EVM equivalent Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. In this L2 mode, Arcology's role becomes a parallel execution layer scaling Ethereum. Arcology's role becomes a parallel execution layer scaling Ethereum.
 
 - [L1 setup](./docs/l1.md)
 - [L2 Rollup setup](./docs/l2.md)
-
 
 ## License
 
