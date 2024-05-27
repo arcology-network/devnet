@@ -17,7 +17,9 @@ then
   exit 1
 fi
 
+mkdir -p arcology/arcology
 mkdir -p op/bin
+mkdir -p log
 
 
 wget -O arcology/bin/arcology https://github.com/arcology-network/binary-releases/releases/download/v${version}/arcology
