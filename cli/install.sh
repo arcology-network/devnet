@@ -31,6 +31,8 @@ sudo chmod 755 ethereum/*
 
 mkdir -p arcology/arcology
 mkdir -p op/bin
+mkdir -p op/deploy-config
+mkdir -p op/deployments/getting-started
 mkdir -p log
 
 
