@@ -34,9 +34,9 @@ This is an **all-in-one** package for running a development network for Arcology
 - [Docker engine](https://docs.docker.com/engine/install/ubuntu/)
 - Git
 
-## Deployment Options
+## Network Setup
 
-An Arcology DevNet can be initiated as either a Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. Once you have cloned the project, you can choose to deploy the network in one of the following ways:
+An Arcology DevNet can be initiated as either a Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. 
 
 - [L1 setup](./docs/l1.md)
 - [L2 Rollup setup](./docs/l2.md)

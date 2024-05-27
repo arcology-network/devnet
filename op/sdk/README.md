@@ -22,13 +22,13 @@ Initial L1 greeting: "hello world."
 - Yarn
 - Hardhat
 
+### 3.1 Deposit from L1 to L2
 
-### 3.1 Transfer from L1 to L2
+First, we are going to transfer some funds from L1 to L2 to ensure that the L2 address has sufficient balance to deploy the greet contract. Before this step, ensure that the sender has sufficient balance.
 
-First, we are going to test the transfer of funds from L1 to L2 to ensure that the L2 address can receive the funds. Before performing this step, ensure there are sufficient balance in the sender's account.
-
-```shell
-sdk> yarn hardhat run test/01-transfer_L1.js --network L1
+```shellls
+devnet> cd op/sdk
+sdk> sudo yarn hardhat run test/01-transfer_L1.js --network L1
 ```
 
 ### 3.2. Check the Balance on L2
@@ -36,8 +36,12 @@ sdk> yarn hardhat run test/01-transfer_L1.js --network L1
 On the machine where L2 is running, check if the recipient address has successfully received the transferred funds.
 
 ```shell
-sdk> yarn hardhat run test/02-balance_L2.js --network L2
+sdk> sudo yarn hardhat run test/02-balance_L2.js --network L2
+```
 
+If the balance is successfully updated, you will see the following output:
+
+```shell
 BigNumber { value: "0" }
 BigNumber { value: "0" }
 BigNumber { value: "0" }

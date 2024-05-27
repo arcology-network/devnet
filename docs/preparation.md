@@ -1,5 +1,7 @@
 ### Clone the Repository
 
+Clone the repository to the machines where you want to run the devnet:
+
 ```shell
 > git clone https://github.com/arcology-network/devnet.git
 ```

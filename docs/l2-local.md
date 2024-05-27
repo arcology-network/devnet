@@ -1,6 +1,6 @@
 ## Local Deployment
 
-You will also need to have **two machines**, either **physical or virtual**, to run the development network. One machine will be used to run the L1 and the other will be used to run the Arcology parallel execution node and Optimism bridge,. The two machines must be able to communicate with each other over the network.
+You will also need to have **two machines**, either **physical or virtual**, to run the development network. One machine will be used to run the L1 and the other will be used to run the Arcology parallel execution node and Optimism bridge. The two machines must be able to communicate with each other over the network.
 
 - **Machine 1:** Ethereum L1  
 - **Machine 2:** Optimism bridge and Arcology parallel execution node
