@@ -19,6 +19,7 @@ fi
 
 mkdir -p op/bin
 
+
 wget -O arcology/bin/arcology https://github.com/arcology-network/binary-releases/releases/download/v${version}/arcology
 wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/v${version}/geth 
 wget -O op/bin/op-batcher https://github.com/arcology-network/binary-releases/releases/download/v${version}/op-batcher

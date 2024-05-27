@@ -33,6 +33,7 @@ mkdir -p arcology/arcology
 mkdir -p op/bin
 mkdir -p log
 
+
 cd op/env
 ./installEnv.sh
 
