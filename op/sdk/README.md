@@ -13,9 +13,7 @@ Initial L1 greeting: "hello world."
 - L2 sends a message: "Hello L1, I am L2."
 - Updated L1 greeting: "Hello L1, I am L2."
 
->> We assume that L1 and L2 are working properly.
-
->>:warning: All the steps blow are executed on **the machine where the Arcology Node is running**. So if you are using the docker >>deployment, you must log in to the container where L2 is running first
+>>:warning: All the steps blow are executed on **the machine where the Arcology Node is running**. So if you are using the docker deployment, you must log in to the container where L2 is running first:
 >>
 >>```shell
 >>    devnet> sudo docker exec -it l2 /bin/bash
