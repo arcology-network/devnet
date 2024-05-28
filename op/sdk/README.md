@@ -28,7 +28,7 @@ First, we are going to transfer some funds from L1 to L2 to ensure that the L2 a
 
 ```shellls
 devnet> cd op/sdk
-sdk> sudo yarn hardhat run test/01-transfer_L1.js --network L1
+devnet/op/sdk> sudo yarn hardhat run test/01-transfer_L1.js --network L1
 ```
 
 ### 3.2. Check the Balance on L2
@@ -36,7 +36,7 @@ sdk> sudo yarn hardhat run test/01-transfer_L1.js --network L1
 On the machine where L2 is running, check if the recipient address has successfully received the transferred funds.
 
 ```shell
-sdk> sudo yarn hardhat run test/02-balance_L2.js --network L2
+devnet/op/sdk> yarn hardhat run test/02-balance_L2.js --network L2
 ```
 
 If the balance is successfully updated, you will see the following output:
@@ -53,7 +53,7 @@ Done in 156.52s.
 ### 2.4. Deploy the Greet Contract
 
 ```shell
-sdk> yarn hardhat run test/03-deployer.js --network L1  #deploy to L1
+devnet/op/sdk> yarn hardhat run test/03-deployer.js --network L1  #deploy to L1
 ```
 If the deployment is successful, you will see the following output:
 
@@ -64,7 +64,7 @@ Done in 10.54s.
 ```
 
 ```shell
-sdk> yarn hardhat run test/03-deployer.js --network L2  #deploy to L2
+devnet/op/sdk> yarn hardhat run test/03-deployer.js --network L2  #deploy to L2
 ```
 Yill see the following output if the deployment is successful:
 
@@ -79,7 +79,7 @@ Done in 10.54s.
 ### 2.5.1.Query L2 original greeting
 
 ```shell
-sdk> yarn hardhat run test/05-deposit_L2.js --network L2  
+devnet/op/sdk> yarn hardhat run test/05-deposit_L2.js --network L2  
 
 Hello, world!
 Done in 10.53s.
@@ -88,7 +88,7 @@ Done in 10.53s.
 ### 2.5.2.L1 sends a greeting to L2
 
 ```shell
-sdk> yarn hardhat run test/04-deposit_L1.js --network L1  
+devnet/op/sdk> yarn hardhat run test/04-deposit_L1.js --network L1  
 
 More output, as long as there is no error
 ```
@@ -98,7 +98,7 @@ More output, as long as there is no error
 Wait for a moment and query the greetings received by L2. If the greetings do not change, query them again later.
 
 ```shell
-sdk> yarn hardhat run test/05-deposit_L2.js --network L2  
+devnet/op/sdk> yarn hardhat run test/05-deposit_L2.js --network L2  
 
 Hello L2.I am L1.
 Done in 10.53s.
@@ -111,7 +111,7 @@ At this point, deopost's operation is basically complete.
 ### 2.6.1. L2 Sends Greetings to L1
 
 ```shell
-sdk> yarn hardhat run test/06-withdraw_L2.js --network L2  
+devnet/op/sdk> yarn hardhat run test/06-withdraw_L2.js --network L2  
 
 More output, as long as no error can be reported
 ```
@@ -119,7 +119,7 @@ More output, as long as no error can be reported
 ### 2.6.2.Confirmation on L1
 
 ```shell
-sdk> yarn hardhat run test/07-withdraw_L1.js --network L1 
+devnet/op/sdk> yarn hardhat run test/07-withdraw_L1.js --network L1 
 
 greet message ： Hello, world!	#The original greeting on L1
 current message status is 2_STATE_ROOT_NOT_PUBLISHED	#The initial state 
