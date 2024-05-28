@@ -2,10 +2,6 @@
 
 It is recommended to use docker containers to deploy the development network for Arcology. This document guides you through the process of setting up an Arcology devNet using docker containers.
 
-### Preparation
-
-On the host machine, install the [the dependencies](./preparation.md) first.
-
 ### Start Ethereum L1
 
  First we need to build and start the Ethereum L1 container, then move on to the Optimism bridge and Arcology parallel execution node.
