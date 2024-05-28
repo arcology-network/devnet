@@ -13,11 +13,6 @@ Initial L1 greeting: "hello world."
 - L2 sends a message: "Hello L1, I am L2."
 - Updated L1 greeting: "Hello L1, I am L2."
 
->>:warning: All the steps blow are executed on **the machine where the Arcology Node is running**. So if you are using the docker deployment, you must log in to the container where L2 is running first:
->>
->>```shell
->>    devnet> sudo docker exec -it l2 /bin/bash
->>```
 
 ## 1. Prerequisites
 
@@ -25,6 +20,13 @@ Initial L1 greeting: "hello world."
 - Node.js
 - Yarn
 - Hardhat
+
+>>:warning: All the steps blow are executed on **the machine where the Arcology Node is running**. So if you are using the docker deployment, you must log in to the container where L2 is running first:
+>>
+>>```shell
+>>    devnet> sudo docker exec -it l2 /bin/bash
+>>```
+>> Replace `l2` with your container name if needed.
 
 
 
