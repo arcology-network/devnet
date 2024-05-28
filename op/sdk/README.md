@@ -15,12 +15,20 @@ Initial L1 greeting: "hello world."
 
 >> We assume that L1 and L2 are working properly.
 
+>>:warning: All the steps blow are executed on **the machine where the Arcology Node is running**. So if you are using the docker >>deployment, you must log in to the container where L2 is running first
+>>
+>>```shell
+>>    devnet> sudo docker exec -it l2 /bin/bash
+>>```
+
 ## 1. Prerequisites
 
 - Live L1 and L2 networks
 - Node.js
 - Yarn
 - Hardhat
+
+
 
 ### 3.1 Deposit from L1 to L2
 

@@ -17,7 +17,7 @@ It is recommended to use docker containers to deploy the development network for
  - -f indicates the RPC URL of the L1 node
  - -s specify the RPC URL of the L2 node
    
->> Feel free to customize the container name as needed.
+>> Feel free to customize the container name as necessary.
  
  ### 2. Start Arcology L2 Rollup
  
