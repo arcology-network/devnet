@@ -16,7 +16,7 @@ Initial L1 greeting: "hello world."
 
 ## 1. Prerequisites
 
-- Live L1 and L2 networks
+- A Live L1 and L2 network
 - Node.js
 - Yarn
 - Hardhat
@@ -46,12 +46,6 @@ On the machine where L2 is running, check if the recipient address has successfu
 devnet/op/sdk> yarn hardhat run test/02-balance_L2.js --network L2
 ```
 
-Bridge
-
-
-
-
-
 If the balance is successfully updated, you will see the following output:
 
 ```shell
@@ -62,6 +56,8 @@ BigNumber { value: "10000000000000000000" }
 transfer successful
 Done in 156.52s.
 ```
+>> :warning: **The balance won't be updated immediately. Depending on the comfirmation time, it may take a few minutes to update.**
+
 
 ### 2.4. Deploy the Greet Contract
 
