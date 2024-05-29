@@ -29,7 +29,6 @@ Initial L1 greeting: "hello world."
 >> Replace `l2` with your container name if needed.
 
 
-
 ### 3.1 Deposit from L1 to L2
 
 First, we are going to transfer some funds from L1 to L2 to ensure that the L2 address has sufficient balance to deploy the greet contract. Before this step, ensure that the sender has sufficient balance.
@@ -46,6 +45,12 @@ On the machine where L2 is running, check if the recipient address has successfu
 ```shell
 devnet/op/sdk> yarn hardhat run test/02-balance_L2.js --network L2
 ```
+
+Bridge
+
+
+
+
 
 If the balance is successfully updated, you will see the following output:
 
