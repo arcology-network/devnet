@@ -20,7 +20,7 @@ function updateAddress(jsonfile,contractAddress){
       if (err) {
         console.error(err);
       } else {
-        console.log('JSON file update successful');
+        console.log('JSON file updated successfully');
       }
     });
   });

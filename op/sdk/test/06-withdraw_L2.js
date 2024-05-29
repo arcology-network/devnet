@@ -19,7 +19,7 @@ function updateTxHash(jsonfile,txhash){
       if (err) {
         console.error(err);
       } else {
-        console.log('JSON file update successful');
+        console.log('JSON file updated successfully');
       }
     });
   });

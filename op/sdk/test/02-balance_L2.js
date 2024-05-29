@@ -20,7 +20,7 @@ async function main() {
     console.log(balance)
     await sleep(5000)
     if(balance.eq(execpted)){
-      console.log('transfer successful')
+      console.log('transfer successfully')
       query=false
     }
   }
