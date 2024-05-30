@@ -10,3 +10,8 @@ text "Ok" 1
 text "Create Configuration File jwt.txt ...   "
 openssl rand -hex 32 > jwt.txt 
 text "Ok" 1
+
+confpath=../arcology/configs
+
+cp jwt.txt $confpath/jwt.txt
+cp genesis.json $confpath/genesis.json
