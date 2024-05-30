@@ -1,6 +1,8 @@
 # devnet
 
-This repository contains the binaries, scripts, and configuration files necessary to run a local development network for a development environment for Arcology Network. This network is intended to be used for testing and development purposes only. The network is configured to use a single node, and is not intended to be used for testing validator functionality. For more information about Arcology Network, please visit [Arcology Network](https://doc.arcology.network/).
+This repository contains the binaries, scripts, and configuration files necessary to run a local Arcology development network. The easiest way to deploy the Arcology L2 network is to use [docker images](https://doc.arcology.network/devnet) provided by the Arcology team, which can be downloaded directly from the docke hub. This guide is only reserved for more advanced users who want to go through the process of building the devNet themselves.
+
+The network is configured to use a single node, and is not intended to be used for testing validator functionality. For more information about Arcology Network, please visit [Arcology Network](https://doc.arcology.network/).
 
 ## 1. Overview
 
@@ -78,7 +80,7 @@ An Arcology DevNet can be initiated as either an EVM equivalent Layer 1 or an Et
 ## 4. Working with the Network
 
 Once the network is up and running, it is ready to be used. Since Arcology is fully compatible with Ethereum, you can use the standard
-Ethereum tools and libraries to interact with the network. For For features unique to Arcology,like parallel programming, consider starting with the [example project](https://github.com/arcology-network/examples), which provides detailed guidance on how to engage with the network.
+Ethereum tools and libraries to interact it. For For features unique to Arcology, like parallel programming, consider starting with the [example project](https://github.com/arcology-network/examples), which provides detailed guidance on how to engage with the network.
 
 ## License
 

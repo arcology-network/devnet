@@ -16,7 +16,7 @@ Initial L1 greeting: "hello world."
 
 ## 1. Prerequisites
 
-- Live L1 and L2 networks
+- A Live L1 and L2 network
 - Node.js
 - Yarn
 - Hardhat
@@ -27,7 +27,6 @@ Initial L1 greeting: "hello world."
 >>    devnet> sudo docker exec -it l2 /bin/bash
 >>```
 >> Replace `l2` with your container name if needed.
-
 
 
 ### 3.1 Deposit from L1 to L2
@@ -57,6 +56,8 @@ BigNumber { value: "10000000000000000000" }
 transfer successful
 Done in 156.52s.
 ```
+>> :warning: **The balance won't be updated immediately. Depending on the comfirmation time, it may take a few minutes to update.**
+
 
 ### 2.4. Deploy the Greet Contract
 
