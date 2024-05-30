@@ -1,6 +1,6 @@
 # devnet
 
-This repository contains the binaries, scripts, and configuration files necessary to run a local Arcology development network. The easiest way to deploy the Arcology L2 network is to use docker images provided by the Arcology team, which can be downloaded directly from the docker hub. This guide is only reserved for more advanced users who want to go through the process of building the devNet themselves.
+This repository contains the binaries, scripts, and configuration files necessary to run a local Arcology development network. The easiest way to deploy the Arcology L2 network is to use [docker images](https://doc.arcology.network/devnet) provided by the Arcology team, which can be downloaded directly from the docke hub. This guide is only reserved for more advanced users who want to go through the process of building the devNet themselves.
 
 The network is configured to use a single node, and is not intended to be used for testing validator functionality. For more information about Arcology Network, please visit [Arcology Network](https://doc.arcology.network/).
 
