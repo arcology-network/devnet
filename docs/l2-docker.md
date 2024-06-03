@@ -1,4 +1,4 @@
-## Docker Deployment
+## Docker Building & Deployment
 
 It is recommended to use docker containers to deploy the development network for Arcology. This document guides you through the process of setting up an Arcology devNet using docker containers.
 
@@ -9,7 +9,7 @@ It is recommended to use docker containers to deploy the development network for
  ``` shell
 	 devnet> cd ethereum
 	 ethereum> sudo docker build -t eth:v1 .
-	 ethereum> sudo docker run -itd --name ethv1 -p 7545:7545 eth:v1
+	 ethereum> sudo docker run -itd --name l1 -p 7545:7545 eth:v1
  ```
  >> Make sure you have the docker engine installed on your machine. If not, please install it first.
 

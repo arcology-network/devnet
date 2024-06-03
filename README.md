@@ -45,7 +45,7 @@ Before initiating the devnet setup on the host machine, first install the necess
 
 ### 2.1. Clone the Repository
 
-Clone the repository to the machines where you want to run the devnet:
+Clone the repository to the **host machines** where you want to run the devnet:
 
 ```shell
 > git clone https://github.com/arcology-network/devnet.git
