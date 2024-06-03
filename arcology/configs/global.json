@@ -30,8 +30,8 @@
     },
     "zookeeper": "127.0.0.1:2181",
     "concurrency": {
-        "default": 4,
-        "exec": 8
+        "default": 16,
+        "exec": 16
     },
     "cluster_name": "node1",
     "cluster_id": 1,
