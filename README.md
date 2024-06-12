@@ -15,7 +15,7 @@ The installation package contains the following files and directories:
 | Name         | Description                                   |
 |--------------|---------------------------------------------- |
 | L1           | This directory contains the files for the Ethereum L1 node.  |
-| L2           | L2: This directory contains the files for the Optimism bridge and Arcology parallel execution node. |
+| L2           | L2: Files for the Optimism bridge and Arcology parallel execution node. |
 | README.md    | Documentation file for the project.           |
 | bin          | Executable files.        |
 | cmd          | Directory for cli-related files.          |
@@ -68,11 +68,9 @@ The script will place the following files in the directory:
 - devnet/op/bin/op-proposer
 - devnet/op/bin/op-node
 
->> You can also compile the source code yourself and place it in the specified directory.
-
 ## 3. Network Setup
 
-An Arcology DevNet can be initiated as either an EVM equivalent Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. In this L2 mode, Arcology's role becomes a parallel execution layer scaling Ethereum. Arcology's role becomes a parallel execution layer scaling Ethereum.
+An Arcology DevNet can be started either an EVM equivalent Layer 1 or an Ethereum Layer 2 rollup network, depending on the requirements. In this L2 mode, Arcology's role becomes a parallel execution layer scaling Ethereum. 
 
 - [L1 setup](./docs/l1.md)
 - [L2 Rollup setup](./docs/l2.md)
