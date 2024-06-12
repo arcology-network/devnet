@@ -1,11 +1,11 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
  
 COPY . ./eth
 
 WORKDIR eth
 
 RUN apt-get update
-RUN apt install sudo
+RUN apt install -y sudo
 RUN ./installEnv.sh
 RUN npm install -g @arcologynetwork/frontend-tools
 
