@@ -90,6 +90,10 @@
             "max_txs_num": 1000
         },
         "receipt-hashing.calculator": {},
+        "receipt-hashing.metrics": {
+            "maxRecords": 20000,
+            "logfile": "./tps.log"
+        },
         "eth_api": {
             "filter_timeout_mins": 5,
             "key_file": "../configs/keys.txt",
