@@ -24,8 +24,11 @@ text "Start Arcology ..."
 cd ../../bin
 #./import_keys.sh >> ${logfile}_arcology 2>&1 & 
 #sleep 10
-./arcology init >> ${logfile}_arcology 2>&1 & 
-sleep 10
+if [ "$2" == "false" ]
+then
+    ./arcology init >> ${logfile}_arcology 2>&1 & 
+    sleep 10
+fi
 ./arcology start --global=../configs/global.json --kafka=../configs/kafka-nil.json --app=../configs/arcology.json --runAsL1=$1>> ${logfile}_arcology 2>&1 & 
 sleep 10
 text "OK" 1

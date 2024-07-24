@@ -18,8 +18,8 @@
         "receiptstore": "127.0.0.1:8982",
         "blockstore": "127.0.0.1:8983",
         "statestore": "127.0.0.1:8984",
-        "indexerstore":"127.0.0.1:8985",
-        "debugstore":"127.0.0.1:8986",
+        "indexerstore": "127.0.0.1:8985",
+        "debugstore": "127.0.0.1:8986",
         "p2p": "127.0.0.1:8987",
         "statesyncstore": "127.0.0.1:8988",
         "tmstatestore": "127.0.0.1:8989",
@@ -37,18 +37,18 @@
     "cluster_id": 1,
     "log_config_file": "../configs/log.toml",
     "persistent_peers": "",
-    "p2p.peers": [
+    "p2p_peers": [
         {
             "id": "node2",
             "host": "127.0.0.1",
             "port": 9192
         }
     ],
-    "p2p.gateway": {
+    "p2p_gateway": {
         "host": "127.0.0.1",
         "port": 9191
     },
-    "p2p.conn": {
+    "p2p_conn": {
         "host": "127.0.0.1",
         "port": 9292
     }

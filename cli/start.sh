@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 . ./cli/show.sh
 
-while getopts f:s:r: OPT; do
+while getopts f:s:r:m: OPT; do
  case ${OPT} in
   f) l1rpc=${OPTARG}
     ;;
@@ -9,8 +9,10 @@ while getopts f:s:r: OPT; do
     ;;
   r) runasl1=${OPTARG}
     ;;
+  m) multinode=${OPTARG}
+    ;;
   \?)
-    printf "[Usage] `date '+%F %T'` -f <L1_RPC_URL> -s <L2_RPC_URL> -r <RunAsL1>\n" >&2
+    printf "[Usage] `date '+%F %T'` -f <L1_RPC_URL> -s <L2_RPC_URL> -r <RunAsL1> -m <Multinode>\n" >&2
     exit 1
  esac
 done 
@@ -30,6 +32,12 @@ fi
 if [ "${runasl1}" == "" ]
 then
   echo "please input run mode ( -r RunAsL1:true or false)"
+  exit 1
+fi
+
+if [ "${multinode}" == "" ]
+then
+  echo "please input run type ( -r Multinode:true or false)"
   exit 1
 fi
 
@@ -58,7 +66,7 @@ fi
 title "[ Start L2 Node ]"
 
 
-./cmd/startArcology.sh ${runasl1}
+./cmd/startArcology.sh ${runasl1} ${multinode}
 
 sleep 20
 

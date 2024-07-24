@@ -29,5 +29,5 @@ Now move on to the **second machine** to start the L2 network. Assuming the firs
 
 ```shell
   devnet> ./cli/install.sh -p 192.168.1.108 
-  devnet> ./cli/start.sh -f http://192.168.1.107:7545 -s http://192.168.1.108:8545 -r false
+  devnet> ./cli/start.sh -f http://192.168.1.107:7545 -s http://192.168.1.108:8545 -r false -m false
 ```
