@@ -12,7 +12,7 @@ while getopts f:s:r:m: OPT; do
   m) multinode=${OPTARG}
     ;;
   \?)
-    printf "[Usage] `date '+%F %T'` -f <L1_RPC_URL> -s <L2_RPC_URL> -r <RunAsL1> -m <Multinode>\n" >&2
+    printf "[Usage] start.sh -f <L1_RPC_URL> -s <L2_RPC_URL> -r <RunAsL1> -m <Multinode>\n" >&2
     exit 1
  esac
 done 

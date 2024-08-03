@@ -51,7 +51,7 @@ async function stopCmd(node){
     pass: node.pwd
   });
 
-  await ssh.exec('cd devnet;./cli/stop.sh', {silent:true})
+  await ssh.exec('cd devnet;./cli/stop.sh -m true', {silent:true})
   .exec('rm -Rf devnet arcology')
   .start();
 }

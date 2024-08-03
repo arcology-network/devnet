@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 . ./cli/show.sh
 
+while getopts m: OPT; do
+ case ${OPT} in
+  m) multinode=${OPTARG}
+    ;;
+  \?)
+    printf "[Usage] stop.sh -m <Multinode>\n" >&2
+    exit 1
+ esac
+done 
+
+if [ "${multinode}" == "" ]
+then
+  echo "please input run type ( -r Multinode:true or false)"
+  exit 1
+fi
+
 setlogfile
 
 title "[ Stop OP Bridge ]"
@@ -27,7 +43,7 @@ text "OK" 1
 
 title "[ Stop Arcology ]"
 cd arcology
-./bin/stop.sh
+./bin/stop.sh ${multinode}
 
 title "[ System Stopped ]"
 text "Refer to the log file( ${logfile}_stop ) for details" 1
