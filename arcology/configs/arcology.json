@@ -109,8 +109,7 @@
         "coinbase":{},
         "state_query":{},
         "make_block": {},
-        "core.initializer": {},
-	"apc_switcher": {},
+	    "apc_switcher": {},
         "scheduler": {
             "batch_size": 500,
             "parallelism": 16,
