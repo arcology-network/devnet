@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
-const toml = require('toml');
-const shell = require('shelljs');
-const path = require('path');
 var SSH = require('simple-ssh');
+var util = require('./util') 
 const logsets = require("logsets")
 
 
@@ -17,33 +15,35 @@ const logsets = require("logsets")
  * 
  * @async
  * @function main
- * @returns {Promise<void>} A Promise that resolves when the transactions are sent.
+ * @returns .
  */
 async function main() {
   var args = process.argv.splice(2);
+  if(args.length<2){
+    console.log('Please provide network configuration and docker flag.');
+    return;
+  }
 
-  const data = fs.readFileSync(args[0], 'utf8');
+  const isDocker=args[1]=="true"
   let nets;
-  try {
-    nets = JSON.parse(data);
-  } catch (error) {
-    console.error('Error parsing the file:', error);
-  }
 
+  // const data = fs.readFileSync(args[0], 'utf8');
+  // 
+  // try {
+  //   nets = JSON.parse(data);
+  // } catch (error) {
+  //   console.error('Error parsing the file:', error);
+  // }
   const tasks = logsets.tasklist();
-  for (i = 0; i < nets.nodes.length; i++) {
-    try{
-      tasks.add("Stop server on "+nets.nodes[i].ip);
-      await stopCmd(nets.nodes[i]);
-      tasks.complete()
-    }catch(e){
-        tasks.error(e)
-    }
-  }
+  
+  nets=await util.executeTask(tasks,false,nets,"Loading network configuration information",util.loadNetConfigs,args[0]);
+
+  await util.executeTask(tasks,true,nets,"Stop server on",stopCmd,nets,isDocker)
 
 }
 
-async function stopCmd(node){
+async function stopCmd(nets,isdocker,idx){
+  const node=nets.nodes[idx]
   var ssh = new SSH({
     host: node.ip,
     port: node.port,
@@ -51,10 +51,21 @@ async function stopCmd(node){
     pass: node.pwd
   });
 
-  await ssh.exec('cd devnet;./cli/stop.sh -m true', {silent:true})
-  .exec('rm -Rf devnet arcology')
-  .start();
+  if(isdocker){
+    await ssh.exec('sudo docker stop l2 && sudo docker rm l2', {
+      silent:true,
+      pty: true
+    })
+    .exec('rm -Rf devnet arcology')
+    .start();
+  }else{
+    await ssh.exec('cd devnet;./cli/stop.sh -m true', {silent:true})
+    .exec('rm -Rf devnet arcology')
+    .start();
+  }
 }
+
+
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
