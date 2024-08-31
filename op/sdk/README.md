@@ -1,6 +1,6 @@
-# SDK User Guide
+# Testing L1-L2 Interactions
 
-This guide explores testing the interaction between L1 and L2 networks using the SDK's op bridge, focusing on "deposit" and "withdraw" transactions. In addition, This documentation details deploying a "greet" contract on both L1 and L2 and outlines the process for cross-chain data transfer through these greetings. Here's how it works:
+This guide explores testing the interaction between L1 and L2 networks using the OP bridge, focusing on "deposit" and "withdraw" transactions. In addition, This documentation details deploying a "greet" contract on both L1 and L2 and outlines the process for cross-chain data transfer through these greetings. Here's how it works:
 
 Deposit (L1 to L2):
 
