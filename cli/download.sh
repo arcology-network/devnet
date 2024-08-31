@@ -11,11 +11,18 @@ while getopts v: OPT; do
  esac
 done 
 
+tag=""
+
 if [ "${version}" == "" ]
 then
-  echo "Please specify the version ( -v X.X.X)"
-  exit 1
+  # echo "Please specify the version ( -v X.X.X)"
+  # exit 1
+  tag="latest"
+else
+  tag="v${version}"
 fi
+
+
 
 mkdir -p arcology/arcology
 mkdir -p op/bin
@@ -24,8 +31,8 @@ mkdir -p op/deployments/getting-started
 mkdir -p log
 
 
-wget -O arcology/bin/arcology https://github.com/arcology-network/binary-releases/releases/download/v${version}/arcology
-wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/v${version}/geth 
-wget -O op/bin/op-batcher https://github.com/arcology-network/binary-releases/releases/download/v${version}/op-batcher
-wget -O op/bin/op-node https://github.com/arcology-network/binary-releases/releases/download/v${version}/op-node
-wget -O op/bin/op-proposer https://github.com/arcology-network/binary-releases/releases/download/v${version}/op-proposer 
+wget -O arcology/bin/arcology https://github.com/arcology-network/binary-releases/releases/download/${tag}/arcology
+wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/${tag}/geth 
+wget -O op/bin/op-batcher https://github.com/arcology-network/binary-releases/releases/download/${tag}/op-batcher
+wget -O op/bin/op-node https://github.com/arcology-network/binary-releases/releases/download/${tag}/op-node
+wget -O op/bin/op-proposer https://github.com/arcology-network/binary-releases/releases/download/${tag}/op-proposer 
