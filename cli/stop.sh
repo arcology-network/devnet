@@ -13,7 +13,7 @@ done
 
 if [ "${multinode}" == "" ]
 then
-  echo "please input run type ( -r Multinode:true or false)"
+  echo "please input run type ( -m Multinode:true or false)"
   exit 1
 fi
 
