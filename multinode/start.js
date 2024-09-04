@@ -29,14 +29,22 @@ async function main() {
 
   const tasks = logsets.tasklist();
   let nets,peers,version;
+  var reset=false
 
   if(isDocker){
     if(args.length<4){
-      console.log('Please provide version of docker image.');
-      return;
+      version="latest"
+      // console.log('Please provide version of docker image.');
+      // return;
+    }else{
+      version=args[3]
+      if(args.length==5){
+        reset=args[4]=='true'
+      }
     }
-    version=args[3]
   }
+
+  
 
   nets=await util.executeTask(tasks,false,nets,"Loading network configuration information",util.loadNetConfigs,args[0]);
   
@@ -59,7 +67,7 @@ async function main() {
   }
   
   if(isDocker){
-    await util.executeTask(tasks,true,nets,"deploy on ",deployDocker,nets,workpath,version);
+    await util.executeTask(tasks,true,nets,"deploy on ",deployDocker,nets,workpath,version,reset);
   }else{
     await util.executeTask(tasks,true,nets,"deploy on ",deploy,nets,workpath,devnetpkg);
   }
@@ -104,7 +112,7 @@ async function CpScripts(workpath,idx){
 }
 
 
-async function deployDocker(nets,workpath,version,idx){
+async function deployDocker(nets,workpath,version,clear,idx){
   const node=nets.nodes[idx]
   var localfile = workpath+'/s' + idx + '.tar'
   shell.exec('cd '+workpath+';tar -zcf s' + idx + '.tar s' + idx+'/');
@@ -118,13 +126,29 @@ async function deployDocker(nets,workpath,version,idx){
     pass: node.pwd
   });
 
+  let containerID
+  if(version=="latest"){
+    containerID='arcologynetwork/devnet'
+  }else{
+    containerID='arcologynetwork/devnet:'+version
+  }
+
+  var clearCmd="echo ''"
+  if(clear){
+    clearCmd="sudo docker rmi arcologynetwork/devnet:latest"
+  }
+
   ssh
   .exec('tar -zxf s'+idx+'.tar')
   .exec('cd s'+idx+';./docker.sh', {
     pty: true,
     // out: console.log.bind(console)
   })
-  .exec('sudo docker run -itd --name l2 -p 8545:8545 -p 26656:26656 -p 9191:9191 -p 9192:9192 -p 9292:9292 arcologynetwork/devnet:'+version+' -f http://'+node.ip+':7545 -s http://'+node.ip+':8545 -r true -m true -d true', {
+  .exec(clearCmd, {
+    pty: true,
+    out: console.log.bind(console)
+  })
+  .exec('sudo docker run -itd --name l2 -p 8545:8545 -p 26656:26656 -p 9191:9191 -p 9192:9192 -p 9292:9292 '+containerID+' -f http://'+node.ip+':7545 -s http://'+node.ip+':8545 -r true -m true -d true', {
     pty: true,
     // out: console.log.bind(console)
   }) //only start container
