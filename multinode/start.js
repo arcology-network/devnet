@@ -146,7 +146,7 @@ async function deployDocker(nets,workpath,version,clear,idx){
   })
   .exec(clearCmd, {
     pty: true,
-    out: console.log.bind(console)
+    // out: console.log.bind(console)
   })
   .exec('sudo docker run -itd --name l2 -p 8545:8545 -p 26656:26656 -p 9191:9191 -p 9192:9192 -p 9292:9292 '+containerID+' -f http://'+node.ip+':7545 -s http://'+node.ip+':8545 -r true -m true -d true', {
     pty: true,
