@@ -1,12 +1,12 @@
 {
   "L1": {
-     "url": "http://192.168.230.137:7545",
+     "url": "http://192.168.230.128:7545",
      "accounts": ["0x29ca9bc036a8f88c2aa3d57969b508189094f4814e01f4969c49250fecfe3e04"],
      "addrs": ["0xd5355603c407B6688fd0F995D8c4F98DD3a91aF5"],
      "chainId": 100
    },
    "L2": {
-     "url": "http://192.168.230.131:8545",
+     "url": "http://192.168.230.130:8545",
      "accounts": ["0x29ca9bc036a8f88c2aa3d57969b508189094f4814e01f4969c49250fecfe3e04"],
      "addrs": ["0xd5355603c407B6688fd0F995D8c4F98DD3a91aF5"],
      "chainId": 118

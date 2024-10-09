@@ -19,7 +19,7 @@ reqenv "GS_ADMIN_PRIVATE_KEY"
 reqenv "L1_RPC_URL"
 
 text "Deploy Smart Contract To L1 ...   "
-forge script scripts/Deploy.s.sol:Deploy --private-key $GS_ADMIN_PRIVATE_KEY --broadcast --rpc-url $L1_RPC_URL >> ${logfile}_config 2>&1
+forge script scripts/Deploy.s.sol:Deploy --private-key $GS_ADMIN_PRIVATE_KEY --broadcast --rpc-url $L1_RPC_URL --legacy >> ${logfile}_config 2>&1
 text "Ok" 1
 
 text "Sync Smart Contract Info From L1 ...   "

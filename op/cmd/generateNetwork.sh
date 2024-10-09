@@ -15,8 +15,8 @@ reqenv() {
 # Check required environment variables
 reqenv "GS_ADMIN_ADDRESS"
 reqenv "GS_ADMIN_PRIVATE_KEY"
-reqenv "L1_ChainId"
-reqenv "L2_ChainId"
+reqenv "L1_CHAIN_ID"
+reqenv "L2_CHAIN_ID"
 reqenv "L1_RPC_URL"
 reqenv "L2_RPC_URL"
 
@@ -27,13 +27,13 @@ config=$(cat << EOL
      "url": "$L1_RPC_URL",
      "accounts": ["$GS_ADMIN_PRIVATE_KEY"],
      "addrs": ["$GS_ADMIN_ADDRESS"],
-     "chainId": $L1_ChainId
+     "chainId": $L1_CHAIN_ID
    },
    "L2": {
      "url": "$L2_RPC_URL",
      "accounts": ["$GS_ADMIN_PRIVATE_KEY"],
      "addrs": ["$GS_ADMIN_ADDRESS"],
-     "chainId": $L2_ChainId
+     "chainId": $L2_CHAIN_ID
    }
 }
 EOL

@@ -31,7 +31,5 @@ contract Test {
     function trever() public returns (address handler) {
         revert("Why are you doing this?");
     }
-}`;
-export const killLibContract = async (deployer: Wallet) => {
-    return await deployContract(deployer, killLibSource);
-};
+}`
+export const killLibContract = async (deployer: Wallet) => { return await deployContract(deployer, killLibSource) };

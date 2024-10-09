@@ -69,6 +69,7 @@ async function main() {
         }
         break; 
       case sdk.MessageStatus.READY_FOR_RELAY:
+        await sleep(13000);
         let tx = await crossChainMessenger.finalizeMessage(hash);
         let rcpt = await tx.wait();
         console.log(`finalizeMessage result ${rcpt}`);

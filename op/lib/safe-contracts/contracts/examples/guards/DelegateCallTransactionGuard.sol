@@ -3,13 +3,9 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "../../common/Enum.sol";
 import "../../base/GuardManager.sol";
-import "../../Safe.sol";
+import "../../GnosisSafe.sol";
 
-/**
- * @title DelegateCallTransactionGuard - Limits delegate calls to a specific target.
- * @author Richard Meissner - @rmeissner
- */
-contract DelegateCallTransactionGuard is BaseGuard {
+contract DelegateCallTransactionGuard is Guard {
     address public immutable allowedTarget;
 
     constructor(address target) {
@@ -22,12 +18,6 @@ contract DelegateCallTransactionGuard is BaseGuard {
         // E.g. The expected check method might change and then the Safe would be locked.
     }
 
-    /**
-     * @notice Called by the Safe contract before a transaction is executed.
-     * @dev  Reverts if the transaction is a delegate call to contract other than the allowed one.
-     * @param to Destination address of Safe transaction.
-     * @param operation Operation type of Safe transaction.
-     */
     function checkTransaction(
         address to,
         uint256,

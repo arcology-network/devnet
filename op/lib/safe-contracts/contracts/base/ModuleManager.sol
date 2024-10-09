@@ -4,18 +4,12 @@ import "../common/Enum.sol";
 import "../common/SelfAuthorized.sol";
 import "./Executor.sol";
 
-/**
- * @title Module Manager - A contract managing Safe modules
- * @notice Modules are extensions with unlimited access to a Safe that can be added to a Safe by its owners.
-           ⚠️ WARNING: Modules are a security risk since they can execute arbitrary transactions, 
-           so only trusted and audited modules should be added to a Safe. A malicious module can
-           completely takeover a Safe.
- * @author Stefan George - @Georgi87
- * @author Richard Meissner - @rmeissner
- */
-abstract contract ModuleManager is SelfAuthorized, Executor {
-    event EnabledModule(address indexed module);
-    event DisabledModule(address indexed module);
+/// @title Module Manager - A contract that manages modules that can execute transactions via this contract
+/// @author Stefan George - <stefan@gnosis.pm>
+/// @author Richard Meissner - <richard@gnosis.pm>
+contract ModuleManager is SelfAuthorized, Executor {
+    event EnabledModule(address module);
+    event DisabledModule(address module);
     event ExecutionFromModuleSuccess(address indexed module);
     event ExecutionFromModuleFailure(address indexed module);
 
@@ -23,27 +17,18 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
 
     mapping(address => address) internal modules;
 
-    /**
-     * @notice Setup function sets the initial storage of the contract.
-     *         Optionally executes a delegate call to another contract to setup the modules.
-     * @param to Optional destination address of call to execute.
-     * @param data Optional data of call to execute.
-     */
     function setupModules(address to, bytes memory data) internal {
         require(modules[SENTINEL_MODULES] == address(0), "GS100");
         modules[SENTINEL_MODULES] = SENTINEL_MODULES;
-        if (to != address(0)) {
-            require(isContract(to), "GS002");
+        if (to != address(0))
             // Setup has to complete successfully or transaction fails.
             require(execute(to, 0, data, Enum.Operation.DelegateCall, gasleft()), "GS000");
-        }
     }
 
-    /**
-     * @notice Enables the module `module` for the Safe.
-     * @dev This can only be done via a Safe transaction.
-     * @param module Module to be whitelisted.
-     */
+    /// @dev Allows to add a module to the whitelist.
+    ///      This can only be done via a Safe transaction.
+    /// @notice Enables the module `module` for the Safe.
+    /// @param module Module to be whitelisted.
     function enableModule(address module) public authorized {
         // Module address cannot be null or sentinel.
         require(module != address(0) && module != SENTINEL_MODULES, "GS101");
@@ -54,12 +39,11 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
         emit EnabledModule(module);
     }
 
-    /**
-     * @notice Disables the module `module` for the Safe.
-     * @dev This can only be done via a Safe transaction.
-     * @param prevModule Previous module in the modules linked list.
-     * @param module Module to be removed.
-     */
+    /// @dev Allows to remove a module from the whitelist.
+    ///      This can only be done via a Safe transaction.
+    /// @notice Disables the module `module` for the Safe.
+    /// @param prevModule Module that pointed to the module to be removed in the linked list
+    /// @param module Module to be removed.
     function disableModule(address prevModule, address module) public authorized {
         // Validate module address and check that it corresponds to module index.
         require(module != address(0) && module != SENTINEL_MODULES, "GS101");
@@ -69,15 +53,11 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
         emit DisabledModule(module);
     }
 
-    /**
-     * @notice Execute `operation` (0: Call, 1: DelegateCall) to `to` with `value` (Native Token)
-     * @dev Function is virtual to allow overriding for L2 singleton to emit an event for indexing.
-     * @param to Destination address of module transaction.
-     * @param value Ether value of module transaction.
-     * @param data Data payload of module transaction.
-     * @param operation Operation type of module transaction.
-     * @return success Boolean flag indicating if the call succeeded.
-     */
+    /// @dev Allows a Module to execute a Safe transaction without any further confirmations.
+    /// @param to Destination address of module transaction.
+    /// @param value Ether value of module transaction.
+    /// @param data Data payload of module transaction.
+    /// @param operation Operation type of module transaction.
     function execTransactionFromModule(
         address to,
         uint256 value,
@@ -87,20 +67,16 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
         // Only whitelisted modules are allowed.
         require(msg.sender != SENTINEL_MODULES && modules[msg.sender] != address(0), "GS104");
         // Execute transaction without further confirmations.
-        success = execute(to, value, data, operation, type(uint256).max);
+        success = execute(to, value, data, operation, gasleft());
         if (success) emit ExecutionFromModuleSuccess(msg.sender);
         else emit ExecutionFromModuleFailure(msg.sender);
     }
 
-    /**
-     * @notice Execute `operation` (0: Call, 1: DelegateCall) to `to` with `value` (Native Token) and return data
-     * @param to Destination address of module transaction.
-     * @param value Ether value of module transaction.
-     * @param data Data payload of module transaction.
-     * @param operation Operation type of module transaction.
-     * @return success Boolean flag indicating if the call succeeded.
-     * @return returnData Data returned by the call.
-     */
+    /// @dev Allows a Module to execute a Safe transaction without any further confirmations and return data
+    /// @param to Destination address of module transaction.
+    /// @param value Ether value of module transaction.
+    /// @param data Data payload of module transaction.
+    /// @param operation Operation type of module transaction.
     function execTransactionFromModuleReturnData(
         address to,
         uint256 value,
@@ -124,68 +100,34 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
         }
     }
 
-    /**
-     * @notice Returns if an module is enabled
-     * @return True if the module is enabled
-     */
+    /// @dev Returns if an module is enabled
+    /// @return True if the module is enabled
     function isModuleEnabled(address module) public view returns (bool) {
         return SENTINEL_MODULES != module && modules[module] != address(0);
     }
 
-    /**
-     * @notice Returns an array of modules.
-     *         If all entries fit into a single page, the next pointer will be 0x1.
-     *         If another page is present, next will be the last element of the returned array.
-     * @param start Start of the page. Has to be a module or start pointer (0x1 address)
-     * @param pageSize Maximum number of modules that should be returned. Has to be > 0
-     * @return array Array of modules.
-     * @return next Start of the next page.
-     */
+    /// @dev Returns array of modules.
+    /// @param start Start of the page.
+    /// @param pageSize Maximum number of modules that should be returned.
+    /// @return array Array of modules.
+    /// @return next Start of the next page.
     function getModulesPaginated(address start, uint256 pageSize) external view returns (address[] memory array, address next) {
-        require(start == SENTINEL_MODULES || isModuleEnabled(start), "GS105");
-        require(pageSize > 0, "GS106");
         // Init array with max page size
         array = new address[](pageSize);
 
         // Populate return array
         uint256 moduleCount = 0;
-        next = modules[start];
-        while (next != address(0) && next != SENTINEL_MODULES && moduleCount < pageSize) {
-            array[moduleCount] = next;
-            next = modules[next];
+        address currentModule = modules[start];
+        while (currentModule != address(0x0) && currentModule != SENTINEL_MODULES && moduleCount < pageSize) {
+            array[moduleCount] = currentModule;
+            currentModule = modules[currentModule];
             moduleCount++;
         }
-
-        /**
-          Because of the argument validation, we can assume that the loop will always iterate over the valid module list values
-          and the `next` variable will either be an enabled module or a sentinel address (signalling the end). 
-          
-          If we haven't reached the end inside the loop, we need to set the next pointer to the last element of the modules array
-          because the `next` variable (which is a module by itself) acting as a pointer to the start of the next page is neither 
-          included to the current page, nor will it be included in the next one if you pass it as a start.
-        */
-        if (next != SENTINEL_MODULES) {
-            next = array[moduleCount - 1];
-        }
+        next = currentModule;
         // Set correct size of returned array
         // solhint-disable-next-line no-inline-assembly
         assembly {
             mstore(array, moduleCount)
         }
-    }
-
-    /**
-     * @notice Returns true if `account` is a contract.
-     * @dev This function will return false if invoked during the constructor of a contract,
-     *      as the code is not actually created until after the constructor finishes.
-     * @param account The address being queried
-     */
-    function isContract(address account) internal view returns (bool) {
-        uint256 size;
-        // solhint-disable-next-line no-inline-assembly
-        assembly {
-            size := extcodesize(account)
-        }
-        return size > 0;
     }
 }

@@ -20,6 +20,19 @@ echo export GS_SEQUENCER_ADDRESS=0x9FB59A1Ece686F251b18C9E683ed3B5A2CEF3352 >> ~
 echo export GS_SEQUENCER_PRIVATE_KEY=0x13cb25b1ef0e5e60c434d15b51d0e566f8778a53772f1028dc0445c7d222ce33 >> ~/.bashrc
 
 ##################################################
+#                Chain Information               #
+##################################################
+
+# L1 chain information
+echo export L1_CHAIN_ID=100 >> ~/.bashrc
+echo export L1_BLOCK_TIME=12 >> ~/.bashrc
+
+# L2 chain information
+echo export L2_CHAIN_ID=118 >> ~/.bashrc
+echo export L2_BLOCK_TIME=2 >> ~/.bashrc
+
+
+##################################################
 #              op-node Configuration             #
 ##################################################
 
@@ -55,12 +68,8 @@ echo export DEPLOYMENT_CONTEXT=getting-started >> ~/.bashrc
 # this for the Getting Started guide.
 #export PRIVATE_KEY=
 
-##################################################
-#               Network Setting                  #
-##################################################
+#addtional
 
-#L1 ChanId
-echo export L1_ChainId=100 >> ~/.bashrc
+echo export DEPLOY_CONFIG_PATH=./deploy-config/getting-started.json >> ~/.bashrc
 
-#L2 ChanId
-echo export L2_ChainId=118 >> ~/.bashrc
+#export L1_BEACON_URL=http://192.168.230.128:3500

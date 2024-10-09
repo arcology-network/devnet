@@ -160,7 +160,7 @@ async function deployDocker(nets,workpath,version,clear,idx){
     pty: true,
     // out: console.log.bind(console)
   })
-  .exec("sudo docker exec l2 /bin/bash -c './cli/start.sh -f http://"+node.ip+":7545 -s http://"+node.ip+":8545 -r true -m true'", {
+  .exec("sudo docker exec l2 /bin/bash -c './cli/start.sh -f http://"+node.ip+":7545 -b http://"+node.ip+":3500 -s http://"+node.ip+":8545 -r true -m true'", {
     pty: true,
     // out: console.log.bind(console)
   })

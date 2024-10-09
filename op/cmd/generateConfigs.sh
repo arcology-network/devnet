@@ -2,9 +2,12 @@
 . ../cli/show.sh
 
 text "Create Configuration File genesis.json and rollup.json ...   "
+
+forge script scripts/L2Genesis.s.sol:L2Genesis --sig 'runWithStateDump()' --rpc-url $L1_RPC_URL
+
 bin/op-node genesis l2 --deploy-config deploy-config/getting-started.json \
-	--deployment-dir deployments/getting-started/ \
-	--outfile.l2 genesis.json --outfile.rollup rollup.json --l1-rpc $L1_RPC_URL  >> ${logfile}_config 2>&1
+    --l1-deployments deployments/getting-started/.deploy --l2-allocs state-dump-118.json \
+	--outfile.l2 genesis.json --outfile.rollup rollup.json --l1-rpc $L1_RPC_URL 
 text "Ok" 1
 
 text "Create Configuration File jwt.txt ...   "

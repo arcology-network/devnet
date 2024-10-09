@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 . ./cli/show.sh
 
-while getopts f:s:r:m:d: OPT; do
+while getopts f:s:r:m:d:b: OPT; do
  case ${OPT} in
   f) l1rpc=${OPTARG}
     ;;
@@ -13,8 +13,10 @@ while getopts f:s:r:m:d: OPT; do
     ;;
   d) docker=${OPTARG}
     ;;
+  b) l1beacon=${OPTARG}
+    ;;
   \?)
-    printf "[Usage] start.sh -f <L1_RPC_URL> -s <L2_RPC_URL> -r <RunAsL1> -m <Multinode> -d <Docker>\n" >&2
+    printf "[Usage] start.sh -f <L1_RPC_URL> -b <L1_BEACON_URL> -s <L2_RPC_URL> -r <RunAsL1> -m <Multinode> -d <Docker>\n" >&2
     exit 1
  esac
 done 
@@ -22,6 +24,12 @@ done
 if [ "${l1rpc}" == "" ]
 then
   echo "please input l1 rpc url ( -f http://ip:port)"
+  exit 1
+fi
+
+if [ "${l1beacon}" == "" ]
+then
+  echo "please input l1 beacon url ( -b http://ip:port)"
   exit 1
 fi
 
@@ -57,6 +65,7 @@ else
 
   echo export L1_RPC_URL=$l1rpc >> ~/.bashrc
   echo export L2_RPC_URL=$l2rpc >> ~/.bashrc
+  echo export L1_BEACON_URL=$l1beacon >> ~/.bashrc
 
   ./cmd/envs.sh
 
@@ -64,7 +73,7 @@ else
   source ~/.bashrc
 
   #################################################################################################
-
+ echo $runasl1
   if [ "${runasl1}" == "false" ]
   then
     ./cmd/main.sh

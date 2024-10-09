@@ -10,6 +10,7 @@ RUN ./installEnv.sh
 RUN npm install -g @arcologynetwork/frontend-tools
 
 EXPOSE 7545
+EXPOSE 3500
 
 CMD ["./start.sh"]
  
