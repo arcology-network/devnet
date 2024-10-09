@@ -32,7 +32,10 @@ mkdir -p log
 
 
 wget -O arcology/bin/arcology https://github.com/arcology-network/binary-releases/releases/download/${tag}/arcology
-wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/${tag}/geth 
+wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/${tag}/geth
+wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/${tag}/beacon-chain
+wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/${tag}/prysmctl
+wget -O ethereum/geth https://github.com/arcology-network/binary-releases/releases/download/${tag}/validator
 wget -O op/bin/op-batcher https://github.com/arcology-network/binary-releases/releases/download/${tag}/op-batcher
 wget -O op/bin/op-node https://github.com/arcology-network/binary-releases/releases/download/${tag}/op-node
-wget -O op/bin/op-proposer https://github.com/arcology-network/binary-releases/releases/download/${tag}/op-proposer 
+wget -O op/bin/op-proposer https://github.com/arcology-network/binary-releases/releases/download/${tag}/op-proposer
