@@ -4,7 +4,7 @@ COPY . ./devnet
 
 WORKDIR devnet
 
-RUN apt-get update
+RUN apt update -y
 RUN apt install -y sudo
 RUN apt install -y  wget
 RUN ln -sf /usr/share/zoneinfo/America/Phoenix /etc/localtime
