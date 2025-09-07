@@ -26,7 +26,8 @@ It is recommended to use docker containers to deploy the development network for
 
  ``` shell
 	devnet> sudo docker build -t arcology-dev:v1 .
-	devnet> sudo docker run -itd --name l2 -p 8545:8545 arcology-dev:v1 -f http://192.168.174.133:7545 -s http://192.168.174.133:8545 -r false -m false
+	devnet> ip=192.168.174.133
+	devnet> sudo docker run -itd --name l2 -p 8545:8545 -p 26656:26656 -p 9191:9191 -p 9192:9192 -p 9292:9292 arcologynetwork/devnet -f http://$ip:7545 -b http://$ip:3500 -s http://$ip:8545 -r false -m false
 	devnet> sudo docker attach l2
  ```
  >>  :warning: Please replace the IP address as needed. The whole process may take **10 ~ 20 minutes** to complete. So please be patient.

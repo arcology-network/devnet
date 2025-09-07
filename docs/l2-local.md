@@ -28,6 +28,7 @@ Now the L1 is ready to be used and produces empty blocks.
 Now move on to the **second machine** to start the L2 network. Assuming the first machine's IP is `192.168.1.107` and the second is `192.168.1.108`.
 
 ```shell
-  devnet> ./cli/install.sh -p 192.168.1.108 
-  devnet> ./cli/start.sh -f http://192.168.1.107:7545 -s http://192.168.1.108:8545 -r false -m false
+  devnet> ip=192.168.1.108 
+  devnet> ./cli/install.sh -p $ip 
+  devnet> ./cli/start.sh -f http://$ip:7545 -b http://$ip:3500 -s http://$ip:8545 -r false -m false
 ```
