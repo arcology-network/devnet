@@ -45,11 +45,15 @@
             "prometheus_fetch_frequency":10,
             "prometheus_fetch_ahead":300,
             "prometheus_fetch_step":"3",
+            "dbpath": "__env__",
             "coefficient":130
         },
         
         "storage.metrics": {},
         "exec_rpc": {},
+        "exec_debug": {
+            "chain_id": "__global__"
+        },
         "executor": {
             "chain_id": "__global__"
         },
@@ -110,6 +114,7 @@
         "state_query":{},
         "make_block": {},
 	    "apc_switcher": {},
+        "feedback": {},
         "scheduler": {
             "batch_size": 500,
             "parallelism": 16,
@@ -161,6 +166,10 @@
         {
             "name": "executor-1",
             "service": "exec_rpc"
+        },
+        {
+            "name": "estimate-executor",
+            "service": "exec_debug"
         },
         {
             "name": "storage",
@@ -275,6 +284,10 @@
         {
             "name": "schdstore",
             "service": "storage.schdstore"
+        },
+        {
+            "name": "global-lock",
+            "service": "global_lock"
         }
     ]
 }

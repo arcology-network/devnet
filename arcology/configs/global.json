@@ -26,7 +26,9 @@
         "transactionalstore": "127.0.0.1:8990",
         "schdstore": "127.0.0.1:8991",
         "pool": "127.0.0.1:8992",
-        "state_query": "127.0.0.1:8993"
+        "state_query": "127.0.0.1:8993",
+        "estimate-executor": "127.0.0.1:8994",
+        "global-lock": "127.0.0.1:8995"
     },
     "zookeeper": "127.0.0.1:2181",
     "concurrency": {
